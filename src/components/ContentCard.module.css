@@ -1,0 +1,48 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #FA4825;
+    color: #fff;
+}
+
+.thumbnail {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.comment {
+    font-size: 16px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 16px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+}

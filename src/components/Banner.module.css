@@ -1,0 +1,20 @@
+.banner {
+    display: flex;
+    flex-direction: column;
+    padding: 96px 128px;
+    background-color: #fff7e9;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        padding: 48px 32px;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+}
