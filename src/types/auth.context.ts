@@ -13,8 +13,8 @@ export interface IAuthContext {
   logout: () => void
 
   // Optional, but if we're able to implement below function, it would be helpful :)
-  getAuthHeader?: () => FetchAuthorizationHeader
-  isOwnPost?: (c: ContentDto) => boolean
+  getAuthHeader: () => FetchAuthorizationHeader
+  isOwnPost: (c: ContentDto) => boolean
 }
 
 export interface ChildProps {

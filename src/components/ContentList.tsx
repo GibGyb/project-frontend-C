@@ -10,18 +10,16 @@ const ContentList = () => {
     data,
   } = useContentList()
 
-  if (!ready) {
+  if (!ready || loading) {
     if (!error) {
       return <Loading />
     } else {
       return <Error />
     }
   }
-  if (loading) return <Loading />
-  if (error) return <Error />
 
   return (
-    <div className="flex flex-wrap gap-10 justify-center my-10 ">
+    <div className="flex flex-wrap gap-10 justify-center px-10 pt-0 pb-10  ">
       {data!.map((content) => (
         <ContentCard key={content.id} {...content} />
       ))}

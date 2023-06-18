@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { FormEvent, useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthProvider'
 import classes from './Login.module.css'
 
 const Login = () => {
+  console.log('render')
   const navigate = useNavigate()
   const { isLoggedIn, login } = useAuth()
   const [isSubmitting, setSubmitting] = useState(false)
@@ -18,6 +19,7 @@ const Login = () => {
 
     try {
       await login(usernameInput, passwordInput)
+      navigate('/')
 
       // TODO: Try login
     } catch (error: any) {
@@ -28,7 +30,7 @@ const Login = () => {
     }
   }
 
-  if (isLoggedIn) return <Navigate to="/" />
+  // if (isLoggedIn) return <Navigate to="/" />
 
   return (
     <div className={classes.container}>
@@ -37,11 +39,11 @@ const Login = () => {
       <form className={classes.form} onSubmit={handleSubmit}>
         <div className={classes.formGroup}>
           <label htmlFor="username">Username</label>
-          <input type="text" id="username" onChange={(event) => setUsernameInput(event.target.value)} />
+          <input type="text" id="username" onChange={(event) => setUsernameInput(event.target.value)} required />
         </div>
         <div className={classes.formGroup}>
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" onChange={(event) => setPasswordInput(event.target.value)} />
+          <input type="password" id="password" onChange={(event) => setPasswordInput(event.target.value)} required />
         </div>
         <div className={classes.formGroup}>
           <button type="submit" disabled={isSubmitting}>

@@ -32,13 +32,13 @@ export const useAuth = () => {
 }
 
 const token = localStorage.getItem('token')
-const user = localStorage.getItem('user')
+const id = localStorage.getItem('id')
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false)
+  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(!!localStorage.getItem('token'))
   const [userInfo, setUserInfo] = React.useState<UserInfo>({
-    id: null,
-    token: null,
+    id: id,
+    token: token,
   })
 
   const login: LoginFunc = async (username, password) => {
@@ -89,13 +89,13 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const getAuthHeader: GetAuthHeaderFunc = () => ({
     // TODO: (Optional) if you're interested in complete this function,
     // it'll help generate Authorization header which can be use in fetch() function
-    Authorization: `Bearer `,
+    Authorization: `Bearer ${token} `,
   })
 
   const isOwnPost: IsOwnPostFunc = (post) => {
     // TODO: (Optional) if you're interested in complete this function,
     // it'll enable you to use isOwnPost from useAuth() in order to decided if each post can be edited
-    return false
+    return post.postedBy.id === userInfo.id
   }
 
   return (
