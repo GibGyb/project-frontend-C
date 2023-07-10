@@ -28,7 +28,7 @@ const Edit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`https://${host}/content/${id}`)
+        const res = await fetch(`${host}/content/${id}`)
         const data = await res.json()
 
         setRating(data.rating)

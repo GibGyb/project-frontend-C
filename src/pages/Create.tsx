@@ -21,7 +21,7 @@ const Create = () => {
     setSubmitting(true)
 
     try {
-      const res = await fetch(`https://${host}/content`, {
+      const res = await fetch(`${host}/content`, {
         method: 'POST',
         body: JSON.stringify({
           videoUrl: newVideo,

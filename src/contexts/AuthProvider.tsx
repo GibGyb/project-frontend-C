@@ -16,7 +16,7 @@ type IsOwnPostFunc = IAuthContext['isOwnPost']
 const AuthContext = React.createContext<IAuthContext | null>(null)
 
 const retrieveUserData = (token: string) =>
-  fetch(`https://${host}/auth/me`, {
+  fetch(`${host}/auth/me`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const loginInfo = { username, password }
 
     try {
-      const res = await fetch(`https://${host}/auth/login`, {
+      const res = await fetch(`${host}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginInfo),
@@ -93,6 +93,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   })
 
   const isOwnPost: IsOwnPostFunc = (post) => {
+    console.log(post.postedBy)
     // TODO: (Optional) if you're interested in complete this function,
     // it'll enable you to use isOwnPost from useAuth() in order to decided if each post can be edited
     return post.postedBy.id === userInfo.id

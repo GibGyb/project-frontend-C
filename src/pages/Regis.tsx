@@ -20,7 +20,7 @@ const Regis = () => {
 
     try {
       setSubmitting(true)
-      const res = await fetch(`https://${host}/user`, {
+      const res = await fetch(`${host}/user`, {
         method: 'POST',
         body: JSON.stringify({
           username: username,

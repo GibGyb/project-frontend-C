@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { host } from '../constant'
 import { ContentListHook } from '../types/contentList.hook'
 import { ContentDto } from '../types/dto'
 
@@ -11,7 +12,7 @@ const useContentList = (): ContentListHook => {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const res = await fetch('https://api.learnhub.thanayut.in.th/content')
+        const res = await fetch(`${host}/content`)
         const data = await res.json()
 
         setData(data.data)
